@@ -32,11 +32,8 @@
 #include <assert.h>
 
 #define MAX_PROOF_OF_WORK 0x1e0ffff0    // highest value for difficulty target (higher values are less difficult)
-#define TARGET_TIMESPAN   (84 * 60 * 60) // the targeted timespan between difficulty target adjustments
-#define TARGET_SPACING    150
+#define TARGET_TIMESPAN   (60 * 60) // the targeted timespan between difficulty target adjustments
 
-#define TIMESTAMP_HARDFORK_LYRA2    1418454333
-#define TIMESTAMP_HARDFORK_LYRA2RE  1439191139
 
 inline static int _ceil_log2(int x)
 {
@@ -128,13 +125,6 @@ BRMerkleBlock *BRMerkleBlockParse(const uint8_t *buf, size_t bufLen)
         
         BRSHA256_2(&block->blockHash, buf, 80);
     }
-    if(block->timestamp < TIMESTAMP_HARDFORK_LYRA2)
-        BRScryptN(&block->powHash, buf, 80);
-    else  if(block->timestamp < TIMESTAMP_HARDFORK_LYRA2RE)
-        BRLyra2(&block->powHash, buf);
-    else
-        BRLyra2REv2(&block->powHash, buf);
-
     return block;
 }
 
