@@ -54,7 +54,7 @@ static const char *testnet_peers[] = {
     NULL
 };
 
-#if VERTCOIN_TESTNET
+#if PRICECOINX_TESTNET
 
 static const struct { uint32_t height; const char *hash; uint32_t timestamp; uint32_t target; } checkpoint_array[] = {
     {       0, "cee8f24feb7a64c8f07916976aa4855decac79b6741a8ec2e32e2747497ad2c9", 1481291250, 0x1e0ffff0 },
@@ -747,7 +747,7 @@ static void _BRPeerManagerFindPeers(BRPeerManager *manager)
     UInt128 *addr, *addrList;
     BRFindPeersInfo *info;
     
-#if VERTCOIN_TESTNET
+#if PRICECOINX_TESTNET
     array_set_count(manager->peers, 1);
     for(int i = 0; testnet_peers[i]; i++) {
         addrList = _addressLookup(testnet_peers[i]);

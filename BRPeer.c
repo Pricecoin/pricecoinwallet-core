@@ -43,7 +43,7 @@
 #include <netinet/in.h>	
 #include <arpa/inet.h>
 
-#if VERTCOIN_TESTNET
+#if PRICECOINX_TESTNET
 #define MAGIC_NUMBER 0x74726576
 #else
 #define MAGIC_NUMBER 0xdab5bffa

@@ -52,7 +52,7 @@
 extern "C" {
 #endif
 
-#if VERTCOIN_TESTNET
+#if PRICECOINX_TESTNET
 #define STANDARD_PORT 15889
 #else
 #define STANDARD_PORT 5889

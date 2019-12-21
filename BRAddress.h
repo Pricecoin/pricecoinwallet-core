@@ -34,15 +34,15 @@
 extern "C" {
 #endif
 
-#if VERTCOIN_TESTNET
+#if PRICECOINX_TESTNET
 #pragma message "testnet build"
 #endif
 
 // bitcoin address prefixes
-#define VERTCOIN_PUBKEY_ADDRESS      71
-#define VERTCOIN_SCRIPT_ADDRESS      5
-#define VERTCOIN_PUBKEY_ADDRESS_TEST 74
-#define VERTCOIN_SCRIPT_ADDRESS_TEST 196
+#define PRICECOINX_PUBKEY_ADDRESS      71
+#define PRICECOINX_SCRIPT_ADDRESS      5
+#define PRICECOINX_PUBKEY_ADDRESS_TEST 74
+#define PRICECOINX_SCRIPT_ADDRESS_TEST 196
 
 // bitcoin script opcodes: https://en.bitcoin.it/wiki/Script#Constants
 #define OP_0           0x00
