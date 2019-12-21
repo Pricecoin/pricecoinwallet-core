@@ -26,9 +26,29 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include "vertcoinhash/Lyra2.h"
-#include "vertcoinhash/Lyra2RE.h"
-#include "vertcoinhash/scryptn.h"
+#include "crypto/sha512.h"
+#include "crypto/allium/allium.c"
+#include "crypto/allium/allium.h"
+#include "crypto/Lyra2RE/Lyra2RE.c"
+#include "crypto/Lyra2RE/Lyra2RE.h"
+#include "crypto/Lyra2RE/Lyra2.c"
+#include "crypto/Lyra2RE/Lyra2.h"
+#include "crypto/Lyra2RE/Sponge.c"
+#include "crypto/Lyra2RE/Sponge.h"
+#include "crypto/Lyra2RE/blake.c"
+#include "crypto/Lyra2RE/groestl.c"
+#include "crypto/Lyra2RE/keccak.c"
+#include "crypto/Lyra2RE/skein.c"
+#include "crypto/Lyra2RE/cubehash.c"
+#include "crypto/Lyra2RE/bmw.c"
+#include "crypto/Lyra2RE/sph_blake.h"
+#include "crypto/Lyra2RE/sph_groestl.h"
+#include "crypto/Lyra2RE/sph_skein.h"
+#include "crypto/Lyra2RE/sph_keccak.h"
+#include "crypto/Lyra2RE/sph_cubehash.h"
+#include "crypto/Lyra2RE/sph_types.h"
+#include "crypto/Lyra2RE/sph_bmw.h"
+
 
 
 // endian swapping
@@ -902,14 +922,6 @@ void BRScrypt(void *dk, size_t dkLen, const void *pw, size_t pwLen, const void *
     free(v);
 }
 
-void BRScryptN(const char* input, char* output, uint32_t len) {
-    scrypt_N_R_1_256(input, output, 2048, 1, len);
-}
-
-void BRLyra2(const char* input, char* output) {
-    lyra2re_hash(input, output);
-}
-
-void BRLyra2REv2(const char* input, char* output) {
-    lyra2re2_hash(input, output);
+void allium(const char* input, char* output) {
+    allium_hash(input, output);
 }
