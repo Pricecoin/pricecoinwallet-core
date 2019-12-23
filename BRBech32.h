@@ -1,9 +1,9 @@
 //
-//  BRBase58.h
+//  BRBech32.h
 //  breadwallet-core
 //
-//  Created by Aaron Voisine on 9/15/15.
-//  Copyright (c) 2015 breadwallet LLC
+//  Created by Aaron Voisine on 1/20/18.
+//  Copyright (c) 2018 breadwallet LLC
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#ifndef BRBase58_h
-#define BRBase58_h
+#ifndef BRBech32_h
+#define BRBech32_h
 
 #include <stddef.h>
 #include <inttypes.h>
@@ -33,22 +33,17 @@
 extern "C" {
 #endif
 
-// base58 and base58check encoding: https://en.bitcoin.it/wiki/Base58Check_encoding
+// bech32 address format: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
 
-// returns the number of characters written to str including NULL terminator, or total strLen needed if str is NULL
-size_t BRBase58Encode(char *str, size_t strLen, const uint8_t *data, size_t dataLen);
+// returns the number of bytes written to data42 (maximum of 42)
+size_t BRBech32Decode(char *hrp84, uint8_t *data42, const char *addr);
 
-// returns the number of bytes written to data, or total dataLen needed if data is NULL
-size_t BRBase58Decode(uint8_t *data, size_t dataLen, const char *str);
-
-// returns the number of characters written to str including NULL terminator, or total strLen needed if str is NULL
-size_t BRBase58CheckEncode(char *str, size_t strLen, const uint8_t *data, size_t dataLen);
-
-// returns the number of bytes written to data, or total dataLen needed if data is NULL
-size_t BRBase58CheckDecode(uint8_t *data, size_t dataLen, const char *str);
+// data must contain a valid BIP141 witness program
+// returns the number of bytes written to addr91 (maximum of 91)
+size_t BRBech32Encode(char *addr91, const char *hrp, const uint8_t data[]);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // BRBase58_h
+#endif // BRBech32_h
