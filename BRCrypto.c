@@ -26,6 +26,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include "allium/sph_blake.h"
+#include "allium/sph_groestl.h"
+#include "allium/sph_skein.h"
+#include "allium/sph_keccak.h"
+#include "allium/sph_cubehash.h"
+#include "allium/Lyra2.h"
 
 // endian swapping
 #if __BIG_ENDIAN__ || (defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__)
